@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Backbone Example</title>
+  <link rel="stylesheet" href="css/screen.css" />
+</head>
+<body>
+  <div id="userapp">
+
+    <header>
+      <h1>Users</h1>
+      <input id="new-user" type="text" placeholder="User name">
+    </header>
+
+    <section id="main">
+      <input id="toggle-enabled" type="checkbox">
+      <label for="toggle-enabled">Disable all</label>
+      <br/>
+      <input id="toggle-disabled" type="checkbox">
+      <label for="toggle-disabled">Enable all</label>
+      <ul id="user-list"></ul>
+    </section>
+
+    <footer>
+      <div id="user-count"></div>
+    </footer>
+
+  </div>
+
+  <div id="instructions">
+    Double-click to edit a user.
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+  <script src="js/backbone.localStorage.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Templates -->
+
+  <script type="text/template" id="user-template">
+    <div class="view">
+      <input class="toggle" type="checkbox" <%= typeof enabled != "undefined" && enabled ? 'checked="checked"' : '' %> />
+      <label><%- name %></label>
+      <a class="destroy"></a>
+    </div>
+    <input class="edit" type="text" value="<%- name %>" />
+  </script>
+
+  <script type="text/template" id="stats-template">
+    <div class="user-count"><b><%= enabled %></b> <%= enabled == 1 ? 'user' : 'users' %> enabled</div>
+  </script>
+
+  </body>
+</html>
